@@ -183,7 +183,8 @@ pub static IP_V6_ADDR: fn(&str) -> bool = |data: &str| -> bool {
             [\dA-Fa-f]{1,4}
             )?
             ::
-            $"
+            $
+            "
         )
         .unwrap();
     }
