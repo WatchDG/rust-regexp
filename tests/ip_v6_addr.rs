@@ -2,18 +2,46 @@
 mod ipv6addr {
     use regexp;
     #[test]
-    fn fe767226_8ef4_4604_8b95_f0992150ffeb() {
-        assert!(regexp::IP_V6_ADDR("::"));
-    }
-    #[test]
-    fn e4ae8fcb_6a19_4e12_820e_8b727fcac61a() {
+    fn ae73404e_8421_4191_bd96_9e207a247ec7() {
         assert!(regexp::IP_V6_ADDR(
             "FEDC:BA98:7654:3210:FEDC:BA98:7654:3210"
         ));
-    }
-    #[test]
-    fn b6ad5796_3c91_4e60_a861_a219ddf73970() {
-        assert!(regexp::IP_V6_ADDR("1080::8:800:200C:417A"));
+        assert!(regexp::IP_V6_ADDR("::BA98:7654:3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::7654:3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654::FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210::BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC:BA98::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC:BA98:7654::"));
+        assert!(regexp::IP_V6_ADDR("::7654:3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654::BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC:BA98::"));
+        assert!(regexp::IP_V6_ADDR("::3210:FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210:FEDC::"));
+        assert!(regexp::IP_V6_ADDR("::FEDC:BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654:3210::"));
+        assert!(regexp::IP_V6_ADDR("::BA98:7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98:7654::"));
+        assert!(regexp::IP_V6_ADDR("::7654:3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC::3210"));
+        assert!(regexp::IP_V6_ADDR("FEDC:BA98::"));
+        assert!(regexp::IP_V6_ADDR("FEDC::"));
+        assert!(regexp::IP_V6_ADDR("::3210"));
+        assert!(regexp::IP_V6_ADDR("::"));
     }
     #[test]
     #[should_panic]
