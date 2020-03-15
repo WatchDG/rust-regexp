@@ -70,3 +70,15 @@ pub static PATH_EMPTY: fn(&str) -> bool = |data: &str| -> bool {
     }
     PATH_EMPTY_RE.is_match(data)
 };
+
+pub mod uri {
+    pub mod authority {
+        pub mod parse {
+            use crate::Regex;
+            lazy_static! {
+                pub static ref RE: Regex =
+                    Regex::new(r"^(?:([^@])+@)?(?P<host>[^:]+)(?::(?P<port>.*))?$").unwrap();
+            }
+        }
+    }
+}
