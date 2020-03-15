@@ -64,13 +64,6 @@ pub static IP_V6_ADDR: fn(&str) -> bool = |data: &str| -> bool {
     IP_V6_ADDR_RE.is_match(data)
 };
 
-pub static PATH_EMPTY: fn(&str) -> bool = |data: &str| -> bool {
-    lazy_static! {
-        static ref PATH_EMPTY_RE: Regex = Regex::new(r"^$").unwrap();
-    }
-    PATH_EMPTY_RE.is_match(data)
-};
-
 pub mod uri {
     pub mod authority {
         pub mod parse {
@@ -79,6 +72,27 @@ pub mod uri {
                 pub static ref RE: Regex =
                     Regex::new(r"^(?:([^@])+@)?(?P<host>[^:]+)(?::(?P<port>.*))?$").unwrap();
             }
+        }
+    }
+
+    pub mod path {
+        pub mod is {
+            use crate::Regex;
+            pub static PATH_EMPTY: fn(&str) -> bool = |data: &str| -> bool {
+                lazy_static! {
+                    static ref PATH_EMPTY_RE: Regex = Regex::new(r"^$").unwrap();
+                }
+                PATH_EMPTY_RE.is_match(data)
+            };
+            pub static PATH_ABEMPTY: fn(&str) -> bool = |data: &str| -> bool {
+                lazy_static! {
+                    static ref PATH_ABEMPTY_RE: Regex = Regex::new(
+                        r"^(?:/(?:[0-9A-Za-z-._~!$&'()*+,;=]|%[A-Fa-f0-9][A-Fa-f0-9])+)*$"
+                    )
+                    .unwrap();
+                }
+                PATH_ABEMPTY_RE.is_match(data)
+            };
         }
     }
 }

@@ -12,11 +12,22 @@ mod uri {
     }
 
     mod path {
-        use regexp::PATH_EMPTY;
+        use regexp::uri::path::is::PATH_ABEMPTY;
+        use regexp::uri::path::is::PATH_EMPTY;
 
         #[test]
         fn test() {
             assert!(PATH_EMPTY(""))
+        }
+
+        #[test]
+        fn test2() {
+            assert!(PATH_ABEMPTY(""))
+        }
+
+        #[test]
+        fn test3() {
+            assert!(PATH_ABEMPTY("/path"))
         }
     }
 }
