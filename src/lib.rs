@@ -63,3 +63,10 @@ pub static IP_V6_ADDR: fn(&str) -> bool = |data: &str| -> bool {
     }
     IP_V6_ADDR_RE.is_match(data)
 };
+
+pub static PATH_EMPTY: fn(&str) -> bool = |data: &str| -> bool {
+    lazy_static! {
+        static ref PATH_EMPTY_RE: Regex = Regex::new(r"^$").unwrap();
+    }
+    PATH_EMPTY_RE.is_match(data)
+};
