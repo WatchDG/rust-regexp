@@ -63,3 +63,20 @@ pub mod ip {
         IP_V6_ADDR_RE.is_match(data)
     };
 }
+
+pub mod uri {
+    use super::Regex;
+
+    /// Scheme.
+    /// # Example:
+    /// ```
+    /// use regexp::is_match::uri::SCHEME;
+    /// assert!(SCHEME("https"));
+    /// ```
+    pub static SCHEME: fn(&str) -> bool = |data: &str| -> bool {
+        lazy_static! {
+            static ref URI_SCHEME_RE: Regex = Regex::new(r"^[:alpha:][[:alpha:]\d+-\.]*$").unwrap();
+        }
+        URI_SCHEME_RE.is_match(data)
+    };
+}
