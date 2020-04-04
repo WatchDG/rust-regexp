@@ -79,4 +79,21 @@ pub mod uri {
         }
         URI_SCHEME_RE.is_match(data)
     };
+
+    pub mod authority {
+        use super::Regex;
+
+        /// Scheme.
+        /// # Example:
+        /// ```
+        /// use regexp::is_match::uri::authority::PORT;
+        /// assert!(PORT("80"));
+        /// ```
+        pub static PORT: fn(&str) -> bool = |data: &str| -> bool {
+            lazy_static! {
+                static ref URI_AUTHORITY_PORT_RE: Regex = Regex::new(r"^\d*$").unwrap();
+            }
+            URI_AUTHORITY_PORT_RE.is_match(data)
+        };
+    }
 }
